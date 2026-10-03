@@ -19,11 +19,29 @@ function WorkItem({ project }: { project: Project }) {
         style={{ background: 'var(--l-hair)' }}
       />
 
-      <project.icon
-        size={23}
-        strokeWidth={1.5}
-        className="hidden flex-none text-[var(--c-signal)] transition-transform duration-400 group-hover:scale-105 sm:block"
-      />
+      {project.logo ? (
+        <span
+          className="flex h-8 w-8 flex-none items-center justify-center overflow-hidden rounded-[9px] ring-1 ring-white/10 transition-transform duration-400 group-hover:scale-105 lg:h-10 lg:w-10 lg:rounded-[11px]"
+          style={{ background: 'rgba(255,255,255,0.05)' }}
+        >
+          <img
+            src={project.logo}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            width={400}
+            height={400}
+            className="h-full w-full object-contain"
+          />
+        </span>
+      ) : (
+        <project.icon
+          size={23}
+          strokeWidth={1.5}
+          className="hidden flex-none text-[var(--c-signal)] transition-transform duration-400 group-hover:scale-105 sm:block"
+        />
+      )}
 
       <span
         aria-hidden="true"
@@ -32,7 +50,11 @@ function WorkItem({ project }: { project: Project }) {
       />
 
       <div className="ml-4 min-w-0 flex-1 sm:ml-[21px]">
-        <h3 className="truncate text-[15.5px] leading-[1.25] tracking-[-0.012em] text-[#e8e6df]">
+        <h3
+          className={`text-[15.5px] leading-[1.25] tracking-[-0.012em] text-[#e8e6df] ${
+            project.logo ? 'line-clamp-2' : 'truncate'
+          }`}
+        >
           {project.title}
         </h3>
         <p className="t-label-sm mt-[9px] flex items-center gap-2 text-[#8b8f88]">
@@ -48,7 +70,11 @@ function WorkItem({ project }: { project: Project }) {
         </p>
       </div>
 
-      <p className="t-body-sm ml-6 hidden w-[216px] flex-none text-[12.5px] leading-[1.76] xl:block">
+      <p
+        className={`t-body-sm ml-6 hidden w-[216px] flex-none text-[12.5px] leading-[1.76] xl:block ${
+          project.logo ? 'line-clamp-3' : ''
+        }`}
+      >
         {project.body}
       </p>
 

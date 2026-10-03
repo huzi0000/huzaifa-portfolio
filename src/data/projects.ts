@@ -12,6 +12,7 @@ import {
   TrendingUp,
   SquarePlay,
   MessagesSquare,
+  Search,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -23,15 +24,57 @@ export type Project = {
   body: string
   groups: string[]
   icon: LucideIcon
+  /** Optional brand mark. Only set on the AEO / GEO audit entries. */
+  logo?: string
 }
 
-export const filters = ['ALL', 'WEB3', 'BUSINESS', 'GROWTH', 'CONTENT'] as const
+export const filters = ['ALL', 'WEB3', 'BUSINESS', 'GROWTH', 'CONTENT', 'AEO / GEO'] as const
 export type Filter = (typeof filters)[number]
 
 export const projects: Project[] = [
   {
-    id: 'crypto-duel-generator',
+    id: 'aeonian-aeo-geo-audit',
     index: '01',
+    title: 'Aeonian — AEO + GEO Discovery Audit',
+    category: 'AEO / GEO',
+    body: 'AI-search discoverability audit covering branded and non-branded visibility, entity understanding, discovery gaps and actionable recommendations.',
+    groups: ['AEO / GEO'],
+    icon: Search,
+    logo: '/assets/aeonian.jpg',
+  },
+  {
+    id: 'swap-io-aeo-geo-audit',
+    index: '02',
+    title: 'Swap.io — AEO + GEO Discovery Audit',
+    category: 'AEO / GEO',
+    body: 'Evaluated answer-engine visibility, entity understanding and opportunities to improve discovery across AI-powered search experiences.',
+    groups: ['AEO / GEO'],
+    icon: Search,
+    logo: '/assets/swap.png',
+  },
+  {
+    id: 'polyester-aeo-geo-audit',
+    index: '03',
+    title: 'Polyester — AEO + GEO Discovery Audit',
+    category: 'AEO / GEO',
+    body: 'Analyzed generative-search visibility, content and entity gaps, and prioritized improvements for stronger AI-search discoverability.',
+    groups: ['AEO / GEO'],
+    icon: Search,
+    logo: '/assets/polyester.png',
+  },
+  {
+    id: 'moove-aeo-geo-strategy',
+    index: '04',
+    title: 'Moove — AEO + GEO Strategy',
+    category: 'AEO / GEO',
+    body: 'Developed an AEO/GEO strategy focused on improving brand discoverability and representation across AI answer engines and generative search.',
+    groups: ['AEO / GEO'],
+    icon: Search,
+    logo: '/assets/moove.png',
+  },
+  {
+    id: 'crypto-duel-generator',
+    index: '05',
     title: 'Crypto Duel Generator Bot',
     category: 'WEB3',
     body: 'Generates comparison content and engagement flows for crypto projects.',
@@ -40,7 +83,7 @@ export const projects: Project[] = [
   },
   {
     id: 'oracle-verification',
-    index: '02',
+    index: '06',
     title: 'Oracle Verification Bot',
     category: 'DATA',
     body: 'Verifies and monitors oracle data with automated checks and alerts.',
@@ -49,7 +92,7 @@ export const projects: Project[] = [
   },
   {
     id: 'retention-alert',
-    index: '03',
+    index: '07',
     title: 'Retention / Alert Bot',
     category: 'AUTOMATION',
     body: 'Tracks on-chain and community activity with real-time alerts and notifications.',
@@ -58,7 +101,7 @@ export const projects: Project[] = [
   },
   {
     id: 'analytics-bot',
-    index: '04',
+    index: '08',
     title: 'Analytics Bot',
     category: 'ANALYTICS',
     body: 'Collects and visualizes project and campaign data for better decisions.',
@@ -67,7 +110,7 @@ export const projects: Project[] = [
   },
   {
     id: 'kol-reporting',
-    index: '05',
+    index: '09',
     title: 'KOL Reporting Bot',
     category: 'REPORTING',
     body: 'Automates KOL tracking, campaign reporting and performance insights.',
@@ -76,7 +119,7 @@ export const projects: Project[] = [
   },
   {
     id: 'dental-clinic',
-    index: '06',
+    index: '10',
     title: 'Dental Clinic Bot',
     category: 'BOOKING',
     body: 'Manages appointments, reminders and patient follow-ups.',
@@ -85,7 +128,7 @@ export const projects: Project[] = [
   },
   {
     id: 'real-estate',
-    index: '07',
+    index: '11',
     title: 'Real Estate Bot',
     category: 'LEADS',
     body: 'Captures and qualifies property leads with automated follow-ups.',
@@ -94,7 +137,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aesthetic-clinic',
-    index: '08',
+    index: '12',
     title: 'Aesthetic Clinic Bot',
     category: 'BOOKING',
     body: 'Handles inquiries, bookings and post-treatment follow-ups.',
@@ -103,7 +146,7 @@ export const projects: Project[] = [
   },
   {
     id: 'hotel-concierge',
-    index: '09',
+    index: '13',
     title: 'Hotel Concierge Bot',
     category: 'AI',
     body: 'Handles guest queries, bookings and recommendations automatically.',
@@ -112,7 +155,7 @@ export const projects: Project[] = [
   },
   {
     id: 'recruitment',
-    index: '10',
+    index: '14',
     title: 'Recruitment Bot',
     category: 'AI',
     body: 'Screens candidates, schedules interviews and manages the hiring pipeline.',
@@ -121,7 +164,7 @@ export const projects: Project[] = [
   },
   {
     id: 'sales-agent',
-    index: '11',
+    index: '15',
     title: 'Sales Agent Bot',
     category: 'AUTOMATION',
     body: 'Automates outreach, follow-ups and lead qualification for sales teams.',
@@ -130,7 +173,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ugc-ad-generator',
-    index: '12',
+    index: '16',
     title: 'UGC Ad Generator',
     category: 'AI',
     body: 'Generates UGC ad concepts and scripts for paid campaigns.',
@@ -139,7 +182,7 @@ export const projects: Project[] = [
   },
   {
     id: 'faq-bot',
-    index: '13',
+    index: '17',
     title: 'FAQ Bot',
     category: 'AI',
     body: 'Answers customer questions with smart, contextual responses.',
