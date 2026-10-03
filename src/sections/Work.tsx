@@ -8,7 +8,7 @@ function WorkItem({ project }: { project: Project }) {
   const [primary, secondary] = project.category.split(' / ')
   return (
     <article
-      className="group flex min-h-[68px] items-center rounded-[12px] pl-4 pr-[18px] transition-colors duration-400 hover:bg-white/[0.03] sm:pl-5"
+      className="group flex items-center rounded-[12px] px-3 py-3.5 transition-colors duration-400 hover:bg-white/[0.03] sm:min-h-[68px] sm:py-0 sm:pl-5 sm:pr-[18px]"
       style={{ border: '1px solid var(--l-hair)', background: '#090a0a' }}
     >
       <span className="t-label-sm w-[16px] flex-none text-[#7e827c]">{project.index}</span>
@@ -21,7 +21,7 @@ function WorkItem({ project }: { project: Project }) {
 
       {project.logo ? (
         <span
-          className="flex h-8 w-8 flex-none items-center justify-center overflow-hidden rounded-[9px] ring-1 ring-white/10 transition-transform duration-400 group-hover:scale-105 lg:h-10 lg:w-10 lg:rounded-[11px]"
+          className="ml-2.5 flex h-7 w-7 flex-none items-center justify-center overflow-hidden rounded-[9px] ring-1 ring-white/10 transition-transform duration-400 group-hover:scale-105 sm:ml-0 sm:h-8 sm:w-8 lg:h-10 lg:w-10 lg:rounded-[11px]"
           style={{ background: 'rgba(255,255,255,0.05)' }}
         >
           <img
@@ -49,15 +49,15 @@ function WorkItem({ project }: { project: Project }) {
         style={{ background: 'var(--l-hair)' }}
       />
 
-      <div className="ml-4 min-w-0 flex-1 sm:ml-[21px]">
+      <div className="ml-2.5 min-w-0 flex-1 sm:ml-[21px]">
         <h3
-          className={`text-[15.5px] leading-[1.25] tracking-[-0.012em] text-[#e8e6df] ${
+          className={`text-[14px] leading-[1.3] tracking-[-0.012em] text-[#e8e6df] sm:text-[15.5px] sm:leading-[1.25] ${
             project.logo ? 'line-clamp-2' : 'truncate'
           }`}
         >
           {project.title}
         </h3>
-        <p className="t-label-sm mt-[9px] flex items-center gap-2 text-[#8b8f88]">
+        <p className="t-label-sm mt-[7px] flex items-center gap-2 text-[#8b8f88] sm:mt-[9px]">
           <span className="text-[#c3c5bd]">{primary}</span>
           {secondary && (
             <>
@@ -78,7 +78,10 @@ function WorkItem({ project }: { project: Project }) {
         {project.body}
       </p>
 
-      <span className="arrow-btn ml-auto h-[38px] w-[38px] flex-none" aria-hidden="true">
+      <span
+        className="arrow-btn ml-3 h-[34px] w-[34px] flex-none sm:ml-auto sm:h-[38px] sm:w-[38px]"
+        aria-hidden="true"
+      >
         <ArrowRight
           size={15}
           strokeWidth={1.6}
@@ -108,32 +111,32 @@ export default function Work() {
     <section id="work" className="relative scroll-mt-16 pt-[var(--section-y)]">
       <div aria-hidden="true" className="gridlines" />
 
-      <div className="shell relative">
+      <div className="shell relative px-[16px] min-[380px]:px-[var(--gutter)]">
         <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.47fr)] lg:items-start lg:gap-10">
           {/* --------------------------------- label, heading, filters */}
           <Reveal>
             <SectionLabel number="04">Selected Work</SectionLabel>
 
-            <h2 className="t-display mt-9 lg:mt-[51px]">
+            <h2 className="t-display mt-7 text-[clamp(1.65rem,8.1vw,2.2rem)] sm:mt-9 sm:text-[clamp(2.2rem,4.82vw,4.9rem)] lg:mt-[51px]">
               <span className="tone-a block">Built systems.</span>
               <span className="tone-b block">real use cases.</span>
             </h2>
 
-            <p className="t-body mt-[22px] max-w-[500px] text-[19px] leading-[1.42] lg:max-w-[520px] lg:text-[22px] lg:leading-[1.32]">
+            <p className="t-body mt-[18px] max-w-[500px] text-[16.5px] leading-[1.55] sm:mt-[22px] sm:text-[19px] sm:leading-[1.42] lg:max-w-[520px] lg:text-[22px] lg:leading-[1.32]">
               A collection of automation agents, growth systems and web applications built for real
               businesses and Web3 projects.
             </p>
 
-            <ul className="no-scrollbar mt-8 flex max-w-full gap-2.5 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
+            <ul className="no-scrollbar mt-7 flex max-w-full flex-nowrap gap-2.5 overflow-x-auto pb-1 sm:mt-8 sm:flex-wrap sm:overflow-visible">
               {filters.map((f) => {
                 const isActive = filter === f
                 return (
-                  <li key={f}>
+                  <li key={f} className="shrink-0 sm:shrink">
                     <button
                       type="button"
                       onClick={() => setFilter(f)}
                       aria-pressed={isActive}
-                      className="flex h-9 items-center gap-2 rounded-full px-[26px] text-[12px] uppercase tracking-[0.06em] transition-colors duration-400"
+                      className="flex h-9 items-center gap-2 whitespace-nowrap rounded-full px-[22px] text-[12px] uppercase tracking-[0.06em] transition-colors duration-400 sm:whitespace-normal sm:px-[26px]"
                       style={{
                         border: `1px solid ${isActive ? 'rgba(255,255,255,0.34)' : 'var(--l-soft)'}`,
                         background: isActive ? 'rgba(255,255,255,0.045)' : 'transparent',
@@ -197,9 +200,9 @@ export default function Work() {
         </div>
 
         {/* --------------------------------- project index */}
-        <div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-2 lg:mt-[48px] lg:grid-cols-2 lg:gap-x-[15px] lg:gap-y-2">
+        <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-2.5 sm:mt-10 sm:gap-2 lg:mt-[48px] lg:grid-cols-2 lg:gap-x-[15px] lg:gap-y-2">
           {[first, second].map((col, ci) => (
-            <div key={ci} className="flex flex-col gap-2">
+            <div key={ci} className="flex flex-col gap-2.5 sm:gap-2">
               {col.length === 0 ? (
                 <p className="t-body-sm border border-[var(--l-hair)] px-5 py-6">
                   No projects in this category.
