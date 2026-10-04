@@ -1,23 +1,6 @@
 import { Layers3, ChartNoAxesColumn, TrendingUp, Users, CodeXml, Monitor, Workflow, Box } from 'lucide-react'
 import SectionLabel from '../components/SectionLabel'
 import Reveal from '../components/Reveal'
-import {
-  PythonLogo,
-  CLangLogo,
-  RustLogo,
-  HtmlLogo,
-  CssLogo,
-  JsLogo,
-  ReactLogo,
-  N8nLogo,
-  OpenAiLogo,
-  RocketLogo,
-  GeminiLogo,
-  VercelLogo,
-  GitHubLogo,
-  FigmaLogo,
-  ZeaburLogo,
-} from '../components/brands'
 
 /* Facts only — no invented numbers anywhere. */
 const FACTS = [
@@ -38,16 +21,20 @@ const CAPABILITIES = [
   { title: 'Paid Growth', body: 'Ads, UGC and growth systems to scale your brand.', icon: Users },
 ]
 
+/* Canonical brand marks bundled locally in public/assets/tech.
+   Official full-colour artwork where the brand has an intrinsic colour
+   (Python, HTML5, CSS, JavaScript, Figma, Supabase, Git, Groq, React, n8n,
+   Gemini); the light-ink variants are the officially monochrome marks. */
 const STACK = [
   {
     title: 'Programming',
     body: 'Core languages I use for development and automation.',
     icon: CodeXml,
     marks: [
-      { key: 'Python', el: <PythonLogo className="h-6 w-6" /> },
-      { key: 'C', el: <CLangLogo className="h-6 w-6" /> },
-      { key: 'Rust', el: <RustLogo className="h-6 w-6" /> },
-      { key: 'More', el: null },
+      { name: 'Python', src: '/assets/tech/python.svg' },
+      { name: 'C', src: '/assets/tech/c.svg' },
+      { name: 'Rust', src: '/assets/tech/rust.svg' },
+      { name: 'JavaScript', src: '/assets/tech/javascript.svg' },
     ],
   },
   {
@@ -55,11 +42,11 @@ const STACK = [
     body: 'Modern frameworks for fast and beautiful experiences.',
     icon: Monitor,
     marks: [
-      { key: 'HTML5', el: <HtmlLogo className="h-6 w-6" /> },
-      { key: 'CSS3', el: <CssLogo className="h-6 w-6" /> },
-      { key: 'JavaScript', el: <JsLogo className="h-6 w-6" /> },
-      { key: 'React', el: <ReactLogo className="h-6 w-6" /> },
-      { key: 'More', el: null },
+      { name: 'HTML5', src: '/assets/tech/html5.svg' },
+      { name: 'CSS', src: '/assets/tech/css.svg' },
+      { name: 'JavaScript', src: '/assets/tech/javascript.svg' },
+      { name: 'React', src: '/assets/tech/react.svg' },
+      { name: 'Next.js', src: '/assets/tech/nextjs.svg' },
     ],
   },
   {
@@ -67,11 +54,11 @@ const STACK = [
     body: 'Building intelligent agents and workflows with modern tools.',
     icon: Workflow,
     marks: [
-      { key: 'n8n', el: <N8nLogo className="h-6 w-6" /> },
-      { key: 'LLM / AI tooling', el: <OpenAiLogo className="h-6 w-6 text-[#e9e7e0]" /> },
-      { key: 'Automation tooling', el: <RocketLogo className="h-6 w-6 text-[#e9e7e0]" /> },
-      { key: 'AI tooling', el: <GeminiLogo className="h-6 w-6" /> },
-      { key: 'More', el: null },
+      { name: 'n8n', src: '/assets/tech/n8n.svg' },
+      { name: 'OpenAI', src: '/assets/tech/openai.svg' },
+      { name: 'Claude', src: '/assets/tech/claude.svg' },
+      { name: 'Gemini', src: '/assets/tech/gemini.svg' },
+      { name: 'Groq', src: '/assets/tech/groq.svg' },
     ],
   },
   {
@@ -79,30 +66,31 @@ const STACK = [
     body: 'Everything I use to build, deploy and grow projects.',
     icon: Box,
     marks: [
-      { key: 'Vercel', el: <VercelLogo className="h-6 w-6" /> },
-      { key: 'GitHub', el: <GitHubLogo className="h-6 w-6 text-[#e9e7e0]" /> },
-      { key: 'Figma', el: <FigmaLogo className="h-6 w-6" /> },
-      { key: 'Zeabur', el: <ZeaburLogo className="h-6 w-6" /> },
-      { key: 'More', el: null },
+      { name: 'Vercel', src: '/assets/tech/vercel.svg' },
+      { name: 'GitHub', src: '/assets/tech/github.svg' },
+      { name: 'Figma', src: '/assets/tech/figma.svg' },
+      { name: 'Supabase', src: '/assets/tech/supabase.svg' },
+      { name: 'Git', src: '/assets/tech/git.svg' },
     ],
   },
 ]
 
-function MarkTile({ label, children }: { label: string; children: React.ReactNode }) {
+function MarkTile({ name, src }: { name: string; src: string }) {
   return (
     <li
-      title={label}
+      title={name}
       className="flex h-12 w-12 items-center justify-center rounded-[12px] transition-colors duration-400 hover:bg-white/[0.075]"
       style={{ background: 'rgba(255,255,255,0.045)' }}
     >
-      {children ?? (
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="5" cy="12" r="1.5" fill="#6f736d" />
-          <circle cx="12" cy="12" r="1.5" fill="#6f736d" />
-          <circle cx="19" cy="12" r="1.5" fill="#6f736d" />
-        </svg>
-      )}
-      <span className="sr-only">{label}</span>
+      <img
+        src={src}
+        alt={name}
+        width={24}
+        height={24}
+        loading="lazy"
+        decoding="async"
+        className="h-6 w-6 object-contain"
+      />
     </li>
   )
 }
@@ -237,9 +225,7 @@ export default function About() {
                   <p className="mt-[13px] text-[12.5px] leading-[1.45] text-[var(--c-muted)]">{s.body}</p>
                   <ul className="mt-5 flex flex-wrap gap-2">
                     {s.marks.map((m) => (
-                      <MarkTile key={m.key} label={m.key}>
-                        {m.el}
-                      </MarkTile>
+                      <MarkTile key={m.name} name={m.name} src={m.src} />
                     ))}
                   </ul>
                 </article>
