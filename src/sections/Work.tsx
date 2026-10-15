@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import SectionLabel from '../components/SectionLabel'
 import Reveal from '../components/Reveal'
 import { filters, projects, type Filter, type Project } from '../data/projects'
@@ -19,29 +19,11 @@ function WorkItem({ project }: { project: Project }) {
         style={{ background: 'var(--l-hair)' }}
       />
 
-      {project.logo ? (
-        <span
-          className="ml-2.5 flex h-7 w-7 flex-none items-center justify-center overflow-hidden rounded-[9px] ring-1 ring-white/10 transition-transform duration-400 group-hover:scale-105 sm:ml-0 sm:h-8 sm:w-8 lg:h-10 lg:w-10 lg:rounded-[11px]"
-          style={{ background: 'rgba(255,255,255,0.05)' }}
-        >
-          <img
-            src={project.logo}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-            width={400}
-            height={400}
-            className="h-full w-full object-contain"
-          />
-        </span>
-      ) : (
-        <project.icon
-          size={23}
-          strokeWidth={1.5}
-          className="hidden flex-none text-[var(--c-signal)] transition-transform duration-400 group-hover:scale-105 sm:block"
-        />
-      )}
+      <project.icon
+        size={23}
+        strokeWidth={1.5}
+        className="hidden flex-none text-[var(--c-signal)] transition-transform duration-400 group-hover:scale-105 sm:block"
+      />
 
       <span
         aria-hidden="true"
@@ -50,47 +32,25 @@ function WorkItem({ project }: { project: Project }) {
       />
 
       <div className="ml-2.5 min-w-0 flex-1 sm:ml-[21px]">
-        <h3
-          className={`text-[14px] leading-[1.3] tracking-[-0.012em] text-[#e8e6df] sm:text-[15.5px] sm:leading-[1.25] ${
-            project.logo ? 'line-clamp-2' : 'truncate'
-          }`}
-        >
+        <h3 className="truncate text-[14px] leading-[1.3] tracking-[-0.012em] text-[#e8e6df] sm:text-[15.5px] sm:leading-[1.25]">
           {project.title}
         </h3>
-        <p className="t-label-sm mt-[7px] flex items-center gap-2 text-[#8b8f88] sm:mt-[9px]">
-          <span className="text-[#c3c5bd]">{primary}</span>
+        <p className="t-label-sm mt-[7px] flex min-w-0 items-center gap-2 text-[#8b8f88] sm:mt-[9px]">
+          <span className="flex-none text-[#c3c5bd]">{primary}</span>
           {secondary && (
             <>
-              <span aria-hidden="true" className="text-[var(--c-signal)]">
+              <span aria-hidden="true" className="flex-none text-[var(--c-signal)]">
                 |
               </span>
-              <span>{secondary}</span>
+              <span className="min-w-0 truncate">{secondary}</span>
             </>
           )}
         </p>
       </div>
 
-      <p
-        className={`t-body-sm ml-6 hidden w-[216px] flex-none text-[12.5px] leading-[1.76] xl:block ${
-          project.logo ? 'line-clamp-3' : ''
-        }`}
-      >
+      <p className="t-body-sm ml-6 line-clamp-3 hidden w-[216px] flex-none text-[12.5px] leading-[1.76] xl:block">
         {project.body}
       </p>
-
-      {project.demo && (
-        <a
-          href={project.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View demo — ${project.title} (opens X in a new tab)`}
-          className="t-label-sm ml-2.5 flex flex-none items-center gap-1.5 rounded-full border px-[9px] py-[7px] text-[#8b8f88] transition-colors duration-400 hover:text-[var(--c-ink)] sm:ml-3 sm:px-[11px]"
-          style={{ borderColor: 'var(--l-soft)' }}
-        >
-          <ExternalLink size={11} strokeWidth={1.8} className="flex-none" />
-          <span className="sr-only sm:not-sr-only">View Demo</span>
-        </a>
-      )}
 
       <span
         className="arrow-btn ml-3 h-[34px] w-[34px] flex-none sm:ml-auto sm:h-[38px] sm:w-[38px]"
