@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ExternalLink } from 'lucide-react'
 import SectionLabel from '../components/SectionLabel'
 import Reveal from '../components/Reveal'
 import { filters, projects, type Filter, type Project } from '../data/projects'
@@ -77,6 +77,20 @@ function WorkItem({ project }: { project: Project }) {
       >
         {project.body}
       </p>
+
+      {project.demo && (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View demo — ${project.title} (opens X in a new tab)`}
+          className="t-label-sm ml-2.5 flex flex-none items-center gap-1.5 rounded-full border px-[9px] py-[7px] text-[#8b8f88] transition-colors duration-400 hover:text-[var(--c-ink)] sm:ml-3 sm:px-[11px]"
+          style={{ borderColor: 'var(--l-soft)' }}
+        >
+          <ExternalLink size={11} strokeWidth={1.8} className="flex-none" />
+          <span className="sr-only sm:not-sr-only">View Demo</span>
+        </a>
+      )}
 
       <span
         className="arrow-btn ml-3 h-[34px] w-[34px] flex-none sm:ml-auto sm:h-[38px] sm:w-[38px]"
