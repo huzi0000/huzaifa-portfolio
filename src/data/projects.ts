@@ -15,6 +15,8 @@ import {
   Utensils,
   Clapperboard,
   Scale,
+  ReceiptText,
+  ScanSearch,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -35,8 +37,28 @@ export type Filter = (typeof filters)[number]
 
 export const projects: Project[] = [
   {
-    id: 'ai-restaurant-booking-agent',
+    id: 'invoice-payment-management-system',
     index: '01',
+    title: 'Invoice & Payment Management System',
+    category: 'BUSINESS / AUTOMATION',
+    body: 'Automates invoice generation, payment tracking, refunds, and customer confirmations.',
+    groups: ['BUSINESS'],
+    icon: ReceiptText,
+    demo: 'https://x.com/hs5402395/status/2108511496393404884?s=20',
+  },
+  {
+    id: 'ai-landing-page-audit-agent',
+    index: '02',
+    title: 'AI Landing Page Audit Agent',
+    category: 'GROWTH / AI AUTOMATION',
+    body: 'Analyzes landing pages, scores conversion readiness, and delivers actionable PDF audits via Telegram.',
+    groups: ['GROWTH'],
+    icon: ScanSearch,
+    demo: 'https://x.com/hs5402395/status/2100229510197293267?s=20',
+  },
+  {
+    id: 'ai-restaurant-booking-agent',
+    index: '03',
     title: 'AI Restaurant Booking Agent',
     category: 'BUSINESS / AI AUTOMATION',
     body: 'Handles restaurant bookings, availability checks and cancellations using AI.',
@@ -46,7 +68,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-video-production-agent',
-    index: '02',
+    index: '04',
     title: 'AI Video Production Agent',
     category: 'CONTENT / AI AUTOMATION',
     body: 'Automates AI video creation, editing and YouTube publishing.',
@@ -56,7 +78,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-legal-email-triage-agent',
-    index: '03',
+    index: '05',
     title: 'AI Legal Email Triage Agent',
     category: 'BUSINESS / AI AUTOMATION',
     body: 'Classifies legal emails, processes attachments and routes requests using AI.',
@@ -66,7 +88,7 @@ export const projects: Project[] = [
   },
   {
     id: 'crypto-duel-generator',
-    index: '04',
+    index: '06',
     title: 'Crypto Duel Generator Bot',
     category: 'WEB3',
     body: 'Generates comparison content and engagement flows for crypto projects.',
@@ -75,7 +97,7 @@ export const projects: Project[] = [
   },
   {
     id: 'oracle-verification',
-    index: '05',
+    index: '07',
     title: 'Oracle Verification Bot',
     category: 'DATA',
     body: 'Verifies and monitors oracle data with automated checks and alerts.',
@@ -84,7 +106,7 @@ export const projects: Project[] = [
   },
   {
     id: 'retention-alert',
-    index: '06',
+    index: '08',
     title: 'Retention / Alert Bot',
     category: 'AUTOMATION',
     body: 'Tracks on-chain and community activity with real-time alerts and notifications.',
@@ -93,7 +115,7 @@ export const projects: Project[] = [
   },
   {
     id: 'analytics-bot',
-    index: '07',
+    index: '09',
     title: 'Analytics Bot',
     category: 'ANALYTICS',
     body: 'Collects and visualizes project and campaign data for better decisions.',
@@ -102,7 +124,7 @@ export const projects: Project[] = [
   },
   {
     id: 'kol-reporting',
-    index: '08',
+    index: '10',
     title: 'KOL Reporting Bot',
     category: 'REPORTING',
     body: 'Automates KOL tracking, campaign reporting and performance insights.',
@@ -111,7 +133,7 @@ export const projects: Project[] = [
   },
   {
     id: 'dental-clinic',
-    index: '09',
+    index: '11',
     title: 'Dental Clinic Bot',
     category: 'BOOKING',
     body: 'Manages appointments, reminders and patient follow-ups.',
@@ -120,7 +142,7 @@ export const projects: Project[] = [
   },
   {
     id: 'real-estate',
-    index: '10',
+    index: '12',
     title: 'Real Estate Bot',
     category: 'LEADS',
     body: 'Captures and qualifies property leads with automated follow-ups.',
@@ -130,7 +152,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aesthetic-clinic',
-    index: '11',
+    index: '13',
     title: 'Aesthetic Clinic Bot',
     category: 'BOOKING',
     body: 'Handles inquiries, bookings and post-treatment follow-ups.',
@@ -139,7 +161,7 @@ export const projects: Project[] = [
   },
   {
     id: 'hotel-concierge',
-    index: '12',
+    index: '14',
     title: 'Hotel Concierge Bot',
     category: 'AI',
     body: 'Handles guest queries, bookings and recommendations automatically.',
@@ -148,7 +170,7 @@ export const projects: Project[] = [
   },
   {
     id: 'recruitment',
-    index: '13',
+    index: '15',
     title: 'Recruitment Bot',
     category: 'AI',
     body: 'Screens candidates, schedules interviews and manages the hiring pipeline.',
@@ -157,7 +179,7 @@ export const projects: Project[] = [
   },
   {
     id: 'sales-agent',
-    index: '14',
+    index: '16',
     title: 'Sales Agent Bot',
     category: 'AUTOMATION',
     body: 'Automates outreach, follow-ups and lead qualification for sales teams.',
@@ -167,7 +189,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ugc-ad-generator',
-    index: '15',
+    index: '17',
     title: 'UGC Ad Generator',
     category: 'AI',
     body: 'Generates UGC ad concepts and scripts for paid campaigns.',
@@ -177,7 +199,7 @@ export const projects: Project[] = [
   },
   {
     id: 'faq-bot',
-    index: '16',
+    index: '18',
     title: 'FAQ Bot',
     category: 'AI',
     body: 'Answers customer questions with smart, contextual responses.',

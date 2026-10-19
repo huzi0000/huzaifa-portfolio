@@ -44,7 +44,7 @@ function WorkItem({ project }: { project: Project }) {
       />
 
       <div className="ml-2.5 min-w-0 flex-1 sm:ml-[21px]">
-        <h3 className="truncate text-[14px] leading-[1.3] tracking-[-0.012em] text-[#e8e6df] sm:text-[15.5px] sm:leading-[1.25]">
+        <h3 className="line-clamp-3 text-[14px] leading-[1.3] tracking-[-0.012em] text-[#e8e6df] sm:text-[15.5px] sm:leading-[1.25]">
           {project.title}
         </h3>
         <p className="t-label-sm mt-[7px] flex min-w-0 items-center gap-2 text-[#8b8f88] sm:mt-[9px]">
