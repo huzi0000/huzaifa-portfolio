@@ -6,6 +6,18 @@ import { filters, projects, type Filter, type Project } from '../data/projects'
 
 function WorkItem({ project }: { project: Project }) {
   const [primary, secondary] = project.category.split(' / ')
+
+  /* the arrow keeps one visual definition whether it is a link or inert */
+  const arrowClass =
+    'arrow-btn ml-3 h-[34px] w-[34px] flex-none no-underline sm:ml-auto sm:h-[38px] sm:w-[38px]'
+  const arrow = (
+    <ArrowRight
+      size={15}
+      strokeWidth={1.6}
+      className="transition-transform duration-400 group-hover:translate-x-0.5"
+    />
+  )
+
   return (
     <article
       className="group flex items-center rounded-[12px] px-3 py-3.5 transition-colors duration-400 hover:bg-white/[0.03] sm:min-h-[68px] sm:py-0 sm:pl-5 sm:pr-[18px]"
@@ -52,16 +64,21 @@ function WorkItem({ project }: { project: Project }) {
         {project.body}
       </p>
 
-      <span
-        className="arrow-btn ml-3 h-[34px] w-[34px] flex-none sm:ml-auto sm:h-[38px] sm:w-[38px]"
-        aria-hidden="true"
-      >
-        <ArrowRight
-          size={15}
-          strokeWidth={1.6}
-          className="transition-transform duration-400 group-hover:translate-x-0.5"
-        />
-      </span>
+      {project.demo ? (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${project.title} demo`}
+          className={arrowClass}
+        >
+          {arrow}
+        </a>
+      ) : (
+        <span className={arrowClass} aria-hidden="true">
+          {arrow}
+        </span>
+      )}
     </article>
   )
 }

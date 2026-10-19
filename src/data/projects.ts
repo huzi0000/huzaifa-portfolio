@@ -26,6 +26,8 @@ export type Project = {
   body: string
   groups: string[]
   icon: LucideIcon
+  /** Optional proof-of-work link. The circular arrow opens it in a new tab. */
+  demo?: string
 }
 
 export const filters = ['ALL', 'WEB3', 'BUSINESS', 'GROWTH', 'CONTENT'] as const
@@ -37,27 +39,30 @@ export const projects: Project[] = [
     index: '01',
     title: 'AI Restaurant Booking Agent',
     category: 'BUSINESS / AI AUTOMATION',
-    body: 'AI restaurant assistant for reservations, availability checks, cancellations, and customer conversations.',
+    body: 'Handles restaurant bookings, availability checks and cancellations using AI.',
     groups: ['BUSINESS'],
     icon: Utensils,
+    demo: 'https://x.com/hs5402395/status/2110082506116751717?s=20',
   },
   {
     id: 'ai-video-production-agent',
     index: '02',
     title: 'AI Video Production Agent',
     category: 'CONTENT / AI AUTOMATION',
-    body: 'Automated AI video creation, editing, and YouTube publishing through an end-to-end workflow.',
+    body: 'Automates AI video creation, editing and YouTube publishing.',
     groups: ['CONTENT'],
     icon: Clapperboard,
+    demo: 'https://x.com/hs5402395/status/2109598360588210222?s=20',
   },
   {
     id: 'ai-legal-email-triage-agent',
     index: '03',
     title: 'AI Legal Email Triage Agent',
     category: 'BUSINESS / AI AUTOMATION',
-    body: 'AI-powered email and attachment processing, request classification, and intelligent routing for law firms.',
+    body: 'Classifies legal emails, processes attachments and routes requests using AI.',
     groups: ['BUSINESS'],
     icon: Scale,
+    demo: 'https://x.com/hs5402395/status/2109184545065210157?s=20',
   },
   {
     id: 'crypto-duel-generator',
@@ -121,6 +126,7 @@ export const projects: Project[] = [
     body: 'Captures and qualifies property leads with automated follow-ups.',
     groups: ['BUSINESS'],
     icon: House,
+    demo: 'https://x.com/hs5402395/status/2108118963268063701?s=20',
   },
   {
     id: 'aesthetic-clinic',
@@ -157,6 +163,7 @@ export const projects: Project[] = [
     body: 'Automates outreach, follow-ups and lead qualification for sales teams.',
     groups: ['BUSINESS', 'GROWTH'],
     icon: TrendingUp,
+    demo: 'https://x.com/hs5402395/status/2110817358130696450?s=20',
   },
   {
     id: 'ugc-ad-generator',
@@ -166,6 +173,7 @@ export const projects: Project[] = [
     body: 'Generates UGC ad concepts and scripts for paid campaigns.',
     groups: ['CONTENT'],
     icon: SquarePlay,
+    demo: 'https://x.com/hs5402395/status/2108292291945537762?s=20',
   },
   {
     id: 'faq-bot',
@@ -175,5 +183,6 @@ export const projects: Project[] = [
     body: 'Answers customer questions with smart, contextual responses.',
     groups: ['BUSINESS', 'CONTENT'],
     icon: MessagesSquare,
+    demo: 'https://x.com/hs5402395/status/2099913546624807221?s=20',
   },
 ]
