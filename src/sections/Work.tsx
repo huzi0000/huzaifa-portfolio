@@ -4,7 +4,7 @@ import SectionLabel from '../components/SectionLabel'
 import Reveal from '../components/Reveal'
 import { filters, projects, type Filter, type Project } from '../data/projects'
 
-function WorkItem({ project }: { project: Project }) {
+function WorkItem({ project, displayNumber }: { project: Project; displayNumber: string }) {
   const [primary, secondary] = project.category.split(' / ')
 
   /* the arrow keeps one visual definition whether it is a link or inert */
@@ -23,7 +23,7 @@ function WorkItem({ project }: { project: Project }) {
       className="group flex items-center rounded-[12px] px-3 py-3.5 transition-colors duration-400 hover:bg-white/[0.03] sm:min-h-[68px] sm:py-0 sm:pl-5 sm:pr-[18px]"
       style={{ border: '1px solid var(--l-hair)', background: '#090a0a' }}
     >
-      <span className="t-label-sm w-[16px] flex-none text-[#7e827c]">{project.index}</span>
+      <span className="t-label-sm w-[16px] flex-none text-[#7e827c]">{displayNumber}</span>
 
       <span
         aria-hidden="true"
@@ -108,6 +108,14 @@ export default function Work() {
   const [filter, setFilter] = useState<Filter>('AI Automation & Agents')
 
   const visible = useMemo(() => projects.filter((p) => p.groups.includes(filter)), [filter])
+
+  /* every filter numbers its own list from 01 — the number follows the
+     filtered order, never the global project index. */
+  const displayNumbers = useMemo(() => {
+    const map = new Map<string, string>()
+    visible.forEach((project, i) => map.set(project.id, String(i + 1).padStart(2, '0')))
+    return map
+  }, [visible])
 
   /* column-major layout — fills column one top-to-bottom, then column two,
      exactly as the reference index does. */
@@ -217,7 +225,13 @@ export default function Work() {
                   No projects in this category.
                 </p>
               ) : (
-                col.map((project) => <WorkItem key={project.id} project={project} />)
+                col.map((project) => (
+                  <WorkItem
+                    key={project.id}
+                    project={project}
+                    displayNumber={displayNumbers.get(project.id) ?? '01'}
+                  />
+                ))
               )}
             </div>
           ))}
