@@ -105,12 +105,9 @@ function WorkItem({ project }: { project: Project }) {
 }
 
 export default function Work() {
-  const [filter, setFilter] = useState<Filter>('ALL')
+  const [filter, setFilter] = useState<Filter>('AI Automation & Agents')
 
-  const visible = useMemo(
-    () => (filter === 'ALL' ? projects : projects.filter((p) => p.groups.includes(filter))),
-    [filter],
-  )
+  const visible = useMemo(() => projects.filter((p) => p.groups.includes(filter)), [filter])
 
   /* column-major layout — fills column one top-to-bottom, then column two,
      exactly as the reference index does. */
