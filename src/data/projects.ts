@@ -17,6 +17,12 @@ import {
   Scale,
   ReceiptText,
   ScanSearch,
+  ChartCandlestick,
+  Vault,
+  Landmark,
+  Globe,
+  Handshake,
+  ShieldCheck,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -30,6 +36,10 @@ export type Project = {
   icon: LucideIcon
   /** Optional proof-of-work link. The circular arrow opens it in a new tab. */
   demo?: string
+  /** Optional homepage screenshot. Rendered as a compact thumbnail in the row. */
+  preview?: string
+  /** Alt text for the preview thumbnail. */
+  previewAlt?: string
 }
 
 export const filters = ['ALL', 'WEB3', 'BUSINESS', 'GROWTH', 'CONTENT'] as const
@@ -37,8 +47,84 @@ export type Filter = (typeof filters)[number]
 
 export const projects: Project[] = [
   {
-    id: 'invoice-payment-management-system',
+    id: 'tradesync',
     index: '01',
+    title: 'TradeSync',
+    category: 'WEB3 / TRADING',
+    body: 'Tracks Solana whale wallets, verifies on-chain DEX swaps, and provides trading alerts and collaborative Alpha Rooms.',
+    groups: ['WEB3'],
+    icon: ChartCandlestick,
+    demo: 'https://tradesync-beta.vercel.app/',
+    preview: '/assets/work-previews/tradesync.webp',
+    previewAlt:
+      'TradeSync dashboard showing tracked Solana whale wallets, Alpha Rooms and on-chain DEX verification',
+  },
+  {
+    id: 'exora',
+    index: '02',
+    title: 'Exora',
+    category: 'WEB3 / DEFI',
+    body: 'A Solana Devnet USDC vault prototype that simulates diversified yields from payment financing, reinsurance, consumer lending, and trade finance.',
+    groups: ['WEB3'],
+    icon: Vault,
+    demo: 'https://exora-eosin.vercel.app/',
+    preview: '/assets/work-previews/exora.webp',
+    previewAlt: 'Exora vault homepage showing simulated diversified yield sources on Solana Devnet',
+  },
+  {
+    id: 'hedgehouse',
+    index: '03',
+    title: 'HedgeHouse',
+    category: 'WEB3 / PREDICTION MARKETS',
+    body: 'A Solana-based housing prediction market prototype that evaluates outcomes using official property-price indices and predefined settlement rules.',
+    groups: ['WEB3'],
+    icon: Landmark,
+    demo: 'https://hedgehouse.vercel.app/',
+    preview: '/assets/work-previews/hedgehouse.webp',
+    previewAlt:
+      'HedgeHouse homepage showing housing prediction markets built on official property price index data',
+  },
+  {
+    id: 'borderless',
+    index: '04',
+    title: 'Borderless',
+    category: 'WEB3 / TOKENIZED ASSETS',
+    body: 'Lets users explore tokenized global stocks, connect Solana wallets, and simulate USDC-based equity trades through a non-custodial interface.',
+    groups: ['WEB3'],
+    icon: Globe,
+    demo: 'https://borderless-solana.vercel.app/',
+    preview: '/assets/work-previews/borderless.webp',
+    previewAlt: 'Borderless homepage for exploring tokenized global equities with a Solana wallet',
+  },
+  {
+    id: 'milestonex',
+    index: '05',
+    title: 'MilestoneX',
+    category: 'WEB3 / ESCROW',
+    body: 'A milestone-based escrow platform where clients lock project funds securely and payments are released to freelancers only after milestone approval.',
+    groups: ['WEB3'],
+    icon: Handshake,
+    demo: 'https://milestonex-flare.vercel.app/',
+    preview: '/assets/work-previews/milestonex.webp',
+    previewAlt:
+      'MilestoneX homepage showing milestone-based FXRP escrow with verified public testnet proof',
+  },
+  {
+    id: 'dependency-zero',
+    index: '06',
+    title: 'Dependency Zero',
+    category: 'WEB3 / SECURITY',
+    body: 'Scans npm dependencies for security risks before installation, generates signed verification evidence, and supports optional Solana Devnet attestations.',
+    groups: ['WEB3'],
+    icon: ShieldCheck,
+    demo: 'https://dependencyzero.duckdns.org/',
+    preview: '/assets/work-previews/dependency-zero.webp',
+    previewAlt:
+      'Dependency Zero homepage scanning npm packages and producing signed evidence before execution',
+  },
+  {
+    id: 'invoice-payment-management-system',
+    index: '07',
     title: 'Invoice & Payment Management System',
     category: 'BUSINESS / AUTOMATION',
     body: 'Automates invoice generation, payment tracking, refunds, and customer confirmations.',
@@ -48,7 +134,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-landing-page-audit-agent',
-    index: '02',
+    index: '08',
     title: 'AI Landing Page Audit Agent',
     category: 'GROWTH / AI AUTOMATION',
     body: 'Analyzes landing pages, scores conversion readiness, and delivers actionable PDF audits via Telegram.',
@@ -58,7 +144,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-restaurant-booking-agent',
-    index: '03',
+    index: '09',
     title: 'AI Restaurant Booking Agent',
     category: 'BUSINESS / AI AUTOMATION',
     body: 'Handles restaurant bookings, availability checks and cancellations using AI.',
@@ -68,7 +154,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-video-production-agent',
-    index: '04',
+    index: '10',
     title: 'AI Video Production Agent',
     category: 'CONTENT / AI AUTOMATION',
     body: 'Automates AI video creation, editing and YouTube publishing.',
@@ -78,7 +164,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ai-legal-email-triage-agent',
-    index: '05',
+    index: '11',
     title: 'AI Legal Email Triage Agent',
     category: 'BUSINESS / AI AUTOMATION',
     body: 'Classifies legal emails, processes attachments and routes requests using AI.',
@@ -88,7 +174,7 @@ export const projects: Project[] = [
   },
   {
     id: 'crypto-duel-generator',
-    index: '06',
+    index: '12',
     title: 'Crypto Duel Generator Bot',
     category: 'WEB3',
     body: 'Generates comparison content and engagement flows for crypto projects.',
@@ -97,7 +183,7 @@ export const projects: Project[] = [
   },
   {
     id: 'oracle-verification',
-    index: '07',
+    index: '13',
     title: 'Oracle Verification Bot',
     category: 'DATA',
     body: 'Verifies and monitors oracle data with automated checks and alerts.',
@@ -106,7 +192,7 @@ export const projects: Project[] = [
   },
   {
     id: 'retention-alert',
-    index: '08',
+    index: '14',
     title: 'Retention / Alert Bot',
     category: 'AUTOMATION',
     body: 'Tracks on-chain and community activity with real-time alerts and notifications.',
@@ -115,7 +201,7 @@ export const projects: Project[] = [
   },
   {
     id: 'analytics-bot',
-    index: '09',
+    index: '15',
     title: 'Analytics Bot',
     category: 'ANALYTICS',
     body: 'Collects and visualizes project and campaign data for better decisions.',
@@ -124,7 +210,7 @@ export const projects: Project[] = [
   },
   {
     id: 'kol-reporting',
-    index: '10',
+    index: '16',
     title: 'KOL Reporting Bot',
     category: 'REPORTING',
     body: 'Automates KOL tracking, campaign reporting and performance insights.',
@@ -133,7 +219,7 @@ export const projects: Project[] = [
   },
   {
     id: 'dental-clinic',
-    index: '11',
+    index: '17',
     title: 'Dental Clinic Bot',
     category: 'BOOKING',
     body: 'Manages appointments, reminders and patient follow-ups.',
@@ -142,7 +228,7 @@ export const projects: Project[] = [
   },
   {
     id: 'real-estate',
-    index: '12',
+    index: '18',
     title: 'Real Estate Bot',
     category: 'LEADS',
     body: 'Captures and qualifies property leads with automated follow-ups.',
@@ -152,7 +238,7 @@ export const projects: Project[] = [
   },
   {
     id: 'aesthetic-clinic',
-    index: '13',
+    index: '19',
     title: 'Aesthetic Clinic Bot',
     category: 'BOOKING',
     body: 'Handles inquiries, bookings and post-treatment follow-ups.',
@@ -161,7 +247,7 @@ export const projects: Project[] = [
   },
   {
     id: 'hotel-concierge',
-    index: '14',
+    index: '20',
     title: 'Hotel Concierge Bot',
     category: 'AI',
     body: 'Handles guest queries, bookings and recommendations automatically.',
@@ -170,7 +256,7 @@ export const projects: Project[] = [
   },
   {
     id: 'recruitment',
-    index: '15',
+    index: '21',
     title: 'Recruitment Bot',
     category: 'AI',
     body: 'Screens candidates, schedules interviews and manages the hiring pipeline.',
@@ -179,7 +265,7 @@ export const projects: Project[] = [
   },
   {
     id: 'sales-agent',
-    index: '16',
+    index: '22',
     title: 'Sales Agent Bot',
     category: 'AUTOMATION',
     body: 'Automates outreach, follow-ups and lead qualification for sales teams.',
@@ -189,7 +275,7 @@ export const projects: Project[] = [
   },
   {
     id: 'ugc-ad-generator',
-    index: '17',
+    index: '23',
     title: 'UGC Ad Generator',
     category: 'AI',
     body: 'Generates UGC ad concepts and scripts for paid campaigns.',
@@ -199,7 +285,7 @@ export const projects: Project[] = [
   },
   {
     id: 'faq-bot',
-    index: '18',
+    index: '24',
     title: 'FAQ Bot',
     category: 'AI',
     body: 'Answers customer questions with smart, contextual responses.',

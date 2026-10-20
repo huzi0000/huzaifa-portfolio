@@ -58,11 +58,32 @@ function WorkItem({ project }: { project: Project }) {
             </>
           )}
         </p>
+
+        {/* preview rows carry their description under the title, freeing the
+            right-hand slot for the homepage thumbnail */}
+        {project.preview && (
+          <p className="t-body-sm mt-[7px] hidden text-[12.5px] leading-[1.76] text-[#8b8f88] sm:mt-[8px] xl:line-clamp-2">
+            {project.body}
+          </p>
+        )}
       </div>
 
-      <p className="t-body-sm ml-6 line-clamp-3 hidden w-[216px] flex-none text-[12.5px] leading-[1.76] xl:block">
-        {project.body}
-      </p>
+      {project.preview ? (
+        <img
+          src={project.preview}
+          alt={project.previewAlt ?? `Homepage preview of ${project.title}`}
+          width={1440}
+          height={900}
+          loading="lazy"
+          decoding="async"
+          className="ml-2.5 h-[35px] w-[56px] flex-none rounded-[5px] object-cover object-top sm:ml-4 sm:h-[50px] sm:w-[80px] xl:h-[75px] xl:w-[120px]"
+          style={{ border: '1px solid var(--l-hair)', background: '#0d0e0e' }}
+        />
+      ) : (
+        <p className="t-body-sm ml-6 line-clamp-3 hidden w-[216px] flex-none text-[12.5px] leading-[1.76] xl:block">
+          {project.body}
+        </p>
+      )}
 
       {project.demo ? (
         <a
